@@ -1,0 +1,95 @@
+/* .reserve {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.418);
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+} */
+.rForm {
+  display: flex;
+  max-width: 1024px;
+}
+.rInput {
+  width: 100%;
+  padding: 0.5rem;
+}
+.rContainer {
+  background-color: white;
+  padding: 20px;
+}
+.mb {
+  margin: 1rem 0rem;
+}
+.rInfo {
+  width: 100%;
+  padding: 20px;
+}
+
+.rGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 50%);
+}
+
+.rItem {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+  padding: 20px;
+}
+
+.rInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.rTitle {
+  font-weight: 500;
+}
+
+.rDesc {
+  font-weight: 300;
+}
+
+.rMax {
+  font-size: 12px;
+}
+
+.rPrice {
+  font-weight: 500;
+}
+
+.rSelectRooms {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  font-size: 8px;
+  color: gray;
+}
+
+.room {
+  display: flex;
+  flex-direction: column;
+}
+
+.rButton {
+  border: none;
+  padding: 10px 20px;
+  background-color: #0071c2;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 5px;
+  width: 100%;
+}
+
+.rBill {
+  display: flex;
+  gap: 20px;
+  width: fit-content;
+}
