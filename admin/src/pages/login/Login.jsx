@@ -3,7 +3,6 @@ import "./login.css";
 import { AuthContext } from "../../context/AuthContext";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import Navbar from "../../components/navbar/Navbar";
 
 const Login = () => {
   const [creadentials, setCreadentials] = useState({
@@ -27,8 +26,16 @@ const Login = () => {
         "http://localhost:5000/api/auth/login",
         creadentials
       );
-      dispatch({ type: "LOGIN_SUCCESS", payload: res.data.details });
-      navigate("/");
+      if (res.data.isAdmin) {
+        dispatch({ type: "LOGIN_SUCCESS", payload: res.data.details });
+
+        navigate("/");
+      } else {
+        dispatch({
+          type: "LOGIN_FAILURE",
+          payload: { message: "You are not allowed!" },
+        });
+      }
     } catch (err) {
       dispatch({ type: "LOGIN_FAILURE", payload: err.response.data });
     }
@@ -36,7 +43,6 @@ const Login = () => {
 
   return (
     <div>
-      <Navbar />
       <div className="login">
         <div className="lContainer">
           <h1 className="lTitle">LOGIN</h1>

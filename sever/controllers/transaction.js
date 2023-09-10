@@ -1,6 +1,5 @@
 const Transactions = require("../models/Transaction");
 const Hotel = require("../models/Hotel");
-const Room = require("../models/Room");
 
 exports.createTransactions = async (req, res, next) => {
   const hotel = await Hotel.findById(req.body.hotel);
@@ -27,7 +26,18 @@ exports.getTransactions = async (req, res, next) => {
     const trans = await Transactions.find({
       "user.userId": req.params.id,
     });
-    res.status(200).json(trans);
+    const sortTrans = trans.sort((a, b) => b.createdAt - a.createdAt);
+    res.status(200).json(sortTrans);
+  } catch (err) {
+    next(err);
+  }
+};
+
+exports.getAllTransactions = async (req, res, next) => {
+  try {
+    const trans = await Transactions.find();
+    const sortTrans = trans.sort((a, b) => b.createdAt - a.createdAt);
+    res.status(200).json(sortTrans);
   } catch (err) {
     next(err);
   }

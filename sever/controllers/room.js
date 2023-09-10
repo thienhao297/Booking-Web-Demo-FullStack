@@ -22,7 +22,7 @@ exports.createRoom = async (req, res, next) => {
 
 exports.updatedRoom = async (req, res, next) => {
   try {
-    const room = await Room.findByIdAndUpdate(
+    const updatedRoom = await Room.findByIdAndUpdate(
       req.params.id,
       { $set: req.body },
       { new: true }
@@ -61,7 +61,7 @@ exports.deleteRoom = async (req, res, next) => {
     } catch (err) {
       next(err);
     }
-    res.status(200).json("Room has been delete!");
+    res.status(200).json("Room has been deleted.");
   } catch (err) {
     next(err);
   }

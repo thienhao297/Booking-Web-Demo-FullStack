@@ -1,0 +1,215 @@
+[
+  {
+    "_id": { "$oid": "6310e01a8cfecfd90b30ca30" },
+    "__v": { "$numberInt": "0" },
+    "createdAt": { "$date": { "$numberLong": "1662050330351" } },
+    "desc": "1 Bathroom",
+    "maxPeople": { "$numberInt": "2" },
+    "price": { "$numberInt": "150" },
+    "roomNumbers": [
+      {
+        "number": "202",
+        "unavailableDates": [],
+        "_id": { "$oid": "64ea5ecd5356e1148d152aab" }
+      }
+    ],
+    "title": "1 Bed Room",
+    "updatedAt": { "$date": { "$numberLong": "1693807170477" } }
+  },
+  {
+    "_id": { "$oid": "6311b2a24a642f01423490d6" },
+    "__v": { "$numberInt": "0" },
+    "createdAt": { "$date": { "$numberLong": "1662104226178" } },
+    "desc": "Welcome drink, Coffee & tea, Express check-in, Free Premium Wifi, Free WiFi, Drinking water",
+    "maxPeople": { "$numberInt": "2" },
+    "price": { "$numberInt": "600" },
+    "roomNumbers": [
+      {
+        "number": "101",
+        "unavailableDates": [],
+        "_id": { "$oid": "64ea5f6b5356e1148d152aae" }
+      },
+      {
+        "number": "102",
+        "unavailableDates": [],
+        "_id": { "$oid": "64ea5f715356e1148d152aaf" }
+      }
+    ],
+    "title": "Basement Double Room",
+    "updatedAt": { "$date": { "$numberLong": "1693265249913" } }
+  },
+  {
+    "_id": { "$oid": "6311b3944a642f01423490df" },
+    "__v": { "$numberInt": "0" },
+    "createdAt": { "$date": { "$numberLong": "1662104468213" } },
+    "desc": "Free breakfast for 2",
+    "maxPeople": { "$numberInt": "2" },
+    "price": { "$numberInt": "700" },
+    "roomNumbers": [
+      {
+        "number": "202",
+        "unavailableDates": [],
+        "_id": { "$oid": "64ea5e9a5356e1148d152aaa" }
+      },
+      {
+        "number": "203",
+        "unavailableDates": [],
+        "_id": { "$oid": "64ea5e975356e1148d152aa9" }
+      },
+      {
+        "number": "205",
+        "unavailableDates": [],
+        "_id": { "$oid": "64ea5e935356e1148d152aa8" }
+      }
+    ],
+    "title": "Superior basement room",
+    "updatedAt": { "$date": { "$numberLong": "1693109654463" } }
+  },
+  {
+    "_id": { "$oid": "6311b47b4a642f01423490f4" },
+    "__v": { "$numberInt": "0" },
+    "createdAt": { "$date": { "$numberLong": "1662104699829" } },
+    "desc": "Welcome drink, Coffee & tea, Express check-in, Free Premium Wifi, Free WiFi, Drinking water",
+    "maxPeople": { "$numberInt": "2" },
+    "price": { "$numberInt": "700" },
+    "roomNumbers": [
+      {
+        "number": "303",
+        "unavailableDates": [],
+        "_id": { "$oid": "64ea5dd75356e1148d152aa3" }
+      },
+      {
+        "number": "403",
+        "unavailableDates": [],
+        "_id": { "$oid": "64ea5ddb5356e1148d152aa4" }
+      },
+      {
+        "number": "404",
+        "unavailableDates": [],
+        "_id": { "$oid": "64ea5ddd5356e1148d152aa5" }
+      }
+    ],
+    "title": "Deluxe Room",
+    "updatedAt": { "$date": { "$numberLong": "1662104699829" } }
+  },
+  {
+    "_id": { "$oid": "6311be30f2fce6ea18172fa8" },
+    "__v": { "$numberInt": "0" },
+    "createdAt": { "$date": { "$numberLong": "1662107184542" } },
+    "desc": "Welcome drink, Coffee & tea, Express check-in, Free WiFi, Drinking water, Free fitness center access",
+    "maxPeople": { "$numberInt": "2" },
+    "price": { "$numberInt": "300" },
+    "roomNumbers": [
+      {
+        "number": "101",
+        "unavailableDates": [],
+        "_id": { "$oid": "64ea5e215356e1148d152aa6" }
+      },
+      {
+        "number": "102",
+        "unavailableDates": [],
+        "_id": { "$oid": "64ea5e245356e1148d152aa7" }
+      }
+    ],
+    "title": "Deluxe Window",
+    "updatedAt": { "$date": { "$numberLong": "1662107184542" } }
+  },
+  {
+    "_id": { "$oid": "6311be52f2fce6ea18172faf" },
+    "__v": { "$numberInt": "0" },
+    "createdAt": { "$date": { "$numberLong": "1662107218319" } },
+    "desc": "Extra low price! (non-refundable)",
+    "maxPeople": { "$numberInt": "2" },
+    "price": { "$numberInt": "425" },
+    "roomNumbers": [
+      {
+        "number": "202",
+        "unavailableDates": [],
+        "_id": { "$oid": "64ea5d155356e1148d152aa0" }
+      },
+      {
+        "number": "203",
+        "unavailableDates": [],
+        "_id": { "$oid": "64ea5d345356e1148d152aa1" }
+      },
+      {
+        "number": "205",
+        "unavailableDates": [],
+        "_id": { "$oid": "64ea5d505356e1148d152aa2" }
+      }
+    ],
+    "title": "Premier City View Room",
+    "updatedAt": { "$date": { "$numberLong": "1693367018014" } }
+  },
+  {
+    "_id": { "$oid": "6311c0a8f2fce6ea18172fc3" },
+    "__v": { "$numberInt": "0" },
+    "createdAt": { "$date": { "$numberLong": "1662107816388" } },
+    "desc": "Free cancellation before September 06, 2022",
+    "maxPeople": { "$numberInt": "2" },
+    "price": { "$numberInt": "350" },
+    "roomNumbers": [
+      {
+        "number": "202",
+        "unavailableDates": [],
+        "_id": { "$oid": "64ea5c615356e1148d152a9d" }
+      },
+      {
+        "number": "203",
+        "unavailableDates": [],
+        "_id": { "$oid": "64ea5ca05356e1148d152a9e" }
+      },
+      {
+        "number": "205",
+        "unavailableDates": [],
+        "_id": { "$oid": "64ea5cc15356e1148d152a9f" }
+      }
+    ],
+    "title": "Budget Twin Room",
+    "updatedAt": { "$date": { "$numberLong": "1662107816388" } }
+  },
+  {
+    "_id": { "$oid": "6310dd998cfecfd90b30ca28" },
+    "__v": { "$numberInt": "0" },
+    "createdAt": { "$date": { "$numberLong": "1662049689506" } },
+    "desc": "King size bed",
+    "maxPeople": { "$numberInt": "3" },
+    "price": { "$numberInt": "200" },
+    "roomNumbers": [
+      {
+        "number": { "$numberInt": "101" },
+        "unavailableDates": [],
+        "_id": { "$oid": "64e82b8f560e4c84a7ac4d63" }
+      },
+      {
+        "number": { "$numberInt": "102" },
+        "unavailableDates": [],
+        "_id": { "$oid": "64e82baa560e4c84a7ac4d64" }
+      }
+    ],
+    "title": "2 Bed Room",
+    "updatedAt": { "$date": { "$numberLong": "1693264429218" } }
+  },
+  {
+    "_id": { "$oid": "6311c083f2fce6ea18172fba" },
+    "__v": { "$numberInt": "0" },
+    "createdAt": { "$date": { "$numberLong": "1662107779990" } },
+    "desc": "Pay nothing until September 04, 2022",
+    "maxPeople": { "$numberInt": "2" },
+    "price": { "$numberInt": "350" },
+    "roomNumbers": [
+      {
+        "number": "101",
+        "unavailableDates": [],
+        "_id": { "$oid": "64fac0db81741f1f009ecb6d" }
+      },
+      {
+        "number": "102",
+        "unavailableDates": [],
+        "_id": { "$oid": "64fac11381741f1f009ecb6e" }
+      }
+    ],
+    "title": "Budget Double Room",
+    "updatedAt": { "$date": { "$numberLong": "1662107779990" } }
+  }
+]

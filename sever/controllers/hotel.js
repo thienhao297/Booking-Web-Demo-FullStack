@@ -30,22 +30,21 @@ exports.updatedHotel = async (req, res, next) => {
 exports.deleteHotel = async (req, res, next) => {
   try {
     await Hotel.findByIdAndDelete(req.params.id);
-    res.status(200).json("Hotel has been delete!");
+    res.status(200).json("Hotel has been deleted.");
   } catch (err) {
     next(err);
   }
 };
-
 exports.getHotel = async (req, res, next) => {
   try {
     const hotel = await Hotel.findById(req.params.id);
     res.status(200).json(hotel);
   } catch (err) {
-    next(er);
+    next(err);
   }
 };
 
-exports.getHotels = async (req, res, next) => {
+exports.getHotelsQuery = async (req, res, next) => {
   const { min, max, limit, city } = req.query;
   try {
     const hotels = await Hotel.find({
@@ -53,6 +52,14 @@ exports.getHotels = async (req, res, next) => {
       cheapestPrice: { $gt: Number(min), $lt: Number(max) },
     }).limit(limit);
 
+    res.status(200).json(hotels);
+  } catch (err) {
+    next(err);
+  }
+};
+exports.getHotels = async (req, res, next) => {
+  try {
+    const hotels = await Hotel.find();
     res.status(200).json(hotels);
   } catch (err) {
     next(err);

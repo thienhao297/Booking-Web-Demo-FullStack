@@ -48,7 +48,7 @@ const Transaction = () => {
                     <th scope="row">
                       {trans.dateStart} - {trans.dateEnd}
                     </th>
-                    <th scope="row">{trans.price}</th>
+                    <th scope="row">${trans.price}</th>
                     <th scope="row">{trans.payment}</th>
                     <th scope="row">
                       {today >= trans.dateStart && today <= trans.dateEnd

@@ -8,17 +8,15 @@ const {
   updateRoomAvailability,
 } = require("../controllers/room");
 
-const { verifyAdmin } = require("../utils/verifiToken");
-
 const router = express.Router();
 
 //CREATE
-router.post("/:hotelid", verifyAdmin, createRoom);
+router.post("/:hotelid", createRoom);
 //UPDATE
 router.put("/availability/:id", updateRoomAvailability);
-router.put("/:id", verifyAdmin, updatedRoom);
+router.put("/:id", updatedRoom);
 //DELETE
-router.delete("/:id/:hotelid", verifyAdmin, deleteRoom);
+router.delete("/:id/:hotelid", deleteRoom);
 //GET
 router.get("/:id", getRoom);
 //GETALL
