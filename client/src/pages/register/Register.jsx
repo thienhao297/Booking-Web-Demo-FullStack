@@ -5,11 +5,7 @@ import Navbar from "../../components/navbar/Navbar";
 import { useState } from "react";
 
 const Register = () => {
-  const [registers, setRegisters] = useState({
-    username: undefined,
-    email: undefined,
-    password: undefined,
-  });
+  const [registers, setRegisters] = useState({});
 
   const navigate = useNavigate();
 
@@ -17,7 +13,7 @@ const Register = () => {
     setRegisters((prev) => ({ ...prev, [e.target.id]: e.target.value }));
   };
 
-  const handleClick = async (e) => {
+  const handleClick = async () => {
     try {
       const res = await axios.post(
         "http://localhost:5000/api/auth/register",
@@ -48,6 +44,20 @@ const Register = () => {
             type="text"
             placeholder="email"
             id="email"
+            onChange={handleChange}
+            className="lInput"
+          />
+          <input
+            type="text"
+            placeholder="Fullname"
+            id="fullName"
+            onChange={handleChange}
+            className="lInput"
+          />
+          <input
+            type="text"
+            placeholder="Phone Number"
+            id="phoneNumber"
             onChange={handleChange}
             className="lInput"
           />

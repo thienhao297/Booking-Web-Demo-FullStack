@@ -39,7 +39,6 @@ const EditHotel = () => {
 
   const handleClick = async (e) => {
     e.preventDefault();
-    const imageUrl = info.imageUrl.split(",");
     try {
       if (
         !info.name ||
@@ -65,7 +64,7 @@ const EditHotel = () => {
       }
       const editHotel = {
         ...info,
-        photos: imageUrl,
+        photos: info.photos,
         rooms,
       };
       const res = await axios.put(
