@@ -90,7 +90,7 @@ const NewHotel = () => {
 
               <div className="formInput">
                 <label htmlFor="file">Images:</label>
-                <input type="text" id="imageUrl" onChange={handleChange} />
+                <input type="text" id="photos" onChange={handleChange} />
               </div>
 
               <div className="formInput">
