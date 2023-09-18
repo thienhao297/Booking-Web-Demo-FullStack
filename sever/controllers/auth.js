@@ -3,14 +3,19 @@ const bcrypt = require("bcryptjs");
 const { createError } = require("../utils/error");
 
 exports.register = async (req, res, next) => {
+  const user = await User.find({
+    $or: [{ username: req.body.username }, { email: req.body.email }],
+  });
+
+  if (user) {
+    return next(createError(404, "Username or email is already taken!"));
+  }
+  const hash = bcrypt.hashSync(req.body.password, 12);
+  const newUser = new User({
+    ...req.body,
+    password: hash,
+  });
   try {
-    const salt = bcrypt.genSaltSync(10);
-    const hash = bcrypt.hashSync(req.body.password, salt);
-    const newUser = new User({
-      username: req.body.username,
-      email: req.body.email,
-      password: hash,
-    });
     await newUser.save();
     res.status(200).send("User has been created.");
   } catch (err) {

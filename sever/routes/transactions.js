@@ -9,9 +9,7 @@ const router = express.Router();
 
 //CREATE
 router.post("/", createTransactions);
-//GET
 router.get("/:id", getTransactions);
-//GETALL
 router.get("/", getAllTransactions);
 
 module.exports = router;

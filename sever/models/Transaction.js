@@ -1,8 +1,6 @@
 const mongoose = require("mongoose");
 
-const Schema = mongoose.Schema;
-
-const TransactionSchema = new Schema(
+const TransactionSchema = new mongoose.Schema(
   {
     user: {
       name: {
@@ -23,11 +21,11 @@ const TransactionSchema = new Schema(
       required: true,
     },
     dateStart: {
-      type: String,
+      type: Number,
       required: true,
     },
     dateEnd: {
-      type: String,
+      type: Number,
       required: true,
     },
     price: {

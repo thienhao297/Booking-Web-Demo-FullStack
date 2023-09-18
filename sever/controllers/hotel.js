@@ -45,14 +45,65 @@ exports.getHotel = async (req, res, next) => {
 };
 
 exports.getHotelsQuery = async (req, res, next) => {
-  const { min, max, limit, city } = req.query;
+  const { min, max, city, startDate, endDate, adult, room } = req.query;
+
   try {
     const hotels = await Hotel.find({
       city: city,
       cheapestPrice: { $gt: Number(min), $lt: Number(max) },
-    }).limit(limit);
+    });
 
-    res.status(200).json(hotels);
+    const availableHotels = await Promise.all(
+      hotels.map(async (hotel) => {
+        const rooms = await Room.find({
+          _id: { $in: hotel.rooms },
+          maxPeople: { $gte: adult },
+          "roomNumbers.unavailableDates": {
+            $not: {
+              $elemMatch: {
+                $gte: startDate,
+                $lte: endDate,
+              },
+            },
+          },
+        });
+
+        const roomB = await Room.find({
+          _id: { $in: hotel.rooms },
+          maxPeople: { $gte: adult },
+          "roomNumbers.unavailableDates": {
+            $elemMatch: {
+              $gte: startDate,
+              $lte: endDate,
+            },
+          },
+        });
+
+        let totalRoom = 0;
+
+        if (roomB.length > 0) {
+          roomB.forEach((r) =>
+            r.roomNumbers.forEach((rb) => {
+              if (rb.unavailableDates.length == 0) {
+                totalRoom++;
+              }
+            })
+          );
+        }
+
+        rooms.forEach((r) => (totalRoom = totalRoom + r.roomNumbers.length));
+
+        if (totalRoom >= room) {
+          return hotel;
+        } else {
+          return null;
+        }
+      })
+    );
+
+    const filteredHotels = availableHotels.filter((hotel) => hotel !== null);
+
+    res.status(200).json(filteredHotels);
   } catch (err) {
     next(err);
   }

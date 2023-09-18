@@ -15,10 +15,10 @@ const Transaction = () => {
     const month = (date.getMonth() + 1).toString().padStart(2, "0");
     const day = date.getDate().toString().padStart(2, "0");
 
-    return `${year}/${month}/${day}`;
+    return `${day}/${month}/${year}`;
   };
 
-  const today = formattedDate(new Date());
+  const today = new Date().getTime();
 
   return (
     <div>
@@ -46,7 +46,8 @@ const Transaction = () => {
                     <th scope="row">{trans.hotel}</th>
                     <th scope="row">{String(trans.room)}</th>
                     <th scope="row">
-                      {trans.dateStart} - {trans.dateEnd}
+                      {formattedDate(trans.dateStart)} -{" "}
+                      {formattedDate(trans.dateEnd)}
                     </th>
                     <th scope="row">${trans.price}</th>
                     <th scope="row">{trans.payment}</th>

@@ -20,10 +20,10 @@ const DashBoard = () => {
     const month = (date.getMonth() + 1).toString().padStart(2, "0");
     const day = date.getDate().toString().padStart(2, "0");
 
-    return `${year}/${month}/${day}`;
+    return `${day}/${month}/${year}`;
   };
 
-  const today = formattedDate(new Date());
+  const today = new Date().getTime();
 
   return (
     <TableContainer component={Paper} className="table">
@@ -48,7 +48,8 @@ const DashBoard = () => {
               <TableCell className="tableCell">{trans.hotel}</TableCell>
               <TableCell className="tableCell">{String(trans.room)}</TableCell>
               <TableCell className="tableCell">
-                {trans.dateStart} - {trans.dateEnd}
+                {formattedDate(trans.dateStart)} -{" "}
+                {formattedDate(trans.dateEnd)}
               </TableCell>
               <TableCell className="tableCell">${trans.price}</TableCell>
               <TableCell className="tableCell">{trans.payment}</TableCell>

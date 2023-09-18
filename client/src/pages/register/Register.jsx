@@ -6,10 +6,12 @@ import { useState } from "react";
 
 const Register = () => {
   const [registers, setRegisters] = useState({});
+  const [error, setError] = useState();
 
   const navigate = useNavigate();
 
   const handleChange = (e) => {
+    setError("");
     setRegisters((prev) => ({ ...prev, [e.target.id]: e.target.value }));
   };
 
@@ -23,7 +25,7 @@ const Register = () => {
         navigate("/login");
       }
     } catch (err) {
-      console.log(err);
+      setError(err.response.data);
     }
   };
 
@@ -68,6 +70,7 @@ const Register = () => {
             onChange={handleChange}
             className="lInput"
           />
+          {error && <span>{error.message}</span>}
           <button onClick={handleClick} className="lButton">
             Register
           </button>

@@ -1,11 +1,9 @@
 const express = require("express");
-const dotenv = require("dotenv");
+const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
-const cookieParser = require("cookie-parser");
 const cors = require("cors");
 
 const app = express();
-dotenv.config();
 
 const authRoute = require("./routes/auth");
 const usersRoute = require("./routes/users");
@@ -13,22 +11,9 @@ const hotelsRoute = require("./routes/hotels");
 const roomsRoute = require("./routes/rooms");
 const transRoute = require("./routes/transactions");
 
-const connect = async () => {
-  try {
-    await mongoose.connect(process.env.MONGO);
-    console.log("Connected to mongoDB.");
-  } catch (error) {
-    throw error;
-  }
-};
-
-mongoose.connection.on("disconnected", () => {
-  console.log("mongoDB disconnected!");
-});
-
 //middlewares
 app.use(cors({ origin: "*" }));
-app.use(cookieParser());
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.json());
 
 app.use("/api/auth", authRoute);
@@ -48,6 +33,11 @@ app.use((err, req, res, next) => {
   });
 });
 
-app.listen(5000, () => {
-  connect();
-});
+const MONGODB_URI = "yourURI";
+
+mongoose
+  .connect(MONGODB_URI)
+  .then((result) => app.listen(5000))
+  .catch((err) => {
+    console.log(err);
+  });

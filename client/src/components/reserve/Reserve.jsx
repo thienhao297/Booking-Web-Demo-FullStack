@@ -24,44 +24,36 @@ const Reserve = ({ setOpen, hotelId }) => {
 
   const [adates, setAdates] = useState(dates);
 
-  const formattedDate = (dateString) => {
-    const date = new Date(dateString);
-    const year = date.getFullYear();
-    const month = (date.getMonth() + 1).toString().padStart(2, "0");
-    const day = date.getDate().toString().padStart(2, "0");
-
-    return `${year}/${month}/${day}`;
-  };
-
-  const getDatesInRange = (startDate, endDate) => {
+  const getDatesInRangeTest = (startDate, endDate) => {
     const start = new Date(startDate);
     const end = new Date(endDate);
-    const date = new Date(start);
+
+    const date = new Date(start.getTime());
+
     const dates = [];
 
     while (date <= end) {
-      dates.push(new Date(date));
+      dates.push(new Date(date).getTime());
       date.setDate(date.getDate() + 1);
     }
+
     return dates;
   };
 
-  const alldates = getDatesInRange(adates[0].startDate, adates[0].endDate);
-  const formatAlldates = alldates.map((date) => formattedDate(date));
+  const alldatesTest = getDatesInRangeTest(
+    adates[0].startDate,
+    adates[0].endDate
+  );
 
-  const isAvailable = (roomNumber) => {
-    const listDates = [];
-    let isFound;
+  const isAvailableTest = (roomNumber) => {
+    let isFound = false;
 
     if (roomNumber.unavailableDates.length > 0) {
-      roomNumber.unavailableDates[0].forEach((date) => listDates.push(date));
-      listDates.forEach((date) => {
-        if (formatAlldates.includes(String(date))) {
+      roomNumber.unavailableDates.flat().forEach((date) => {
+        if (alldatesTest.includes(date)) {
           isFound = true;
         }
       });
-    } else {
-      isFound = false;
     }
 
     return isFound;
@@ -106,8 +98,8 @@ const Reserve = ({ setOpen, hotelId }) => {
         user: { name: user.username, userId: user._id },
         hotel: hotelId,
         room: roomNumbers,
-        dateStart: formattedDate(adates[0].startDate),
-        dateEnd: formattedDate(adates[0].endDate),
+        dateStart: adates[0].startDate.getTime(),
+        dateEnd: adates[0].endDate.getTime(),
         price: totalPricePerDay * days,
         payment: paymentValue,
       });
@@ -122,7 +114,7 @@ const Reserve = ({ setOpen, hotelId }) => {
             const res = axios.put(
               `http://localhost:5000/api/rooms/availability/${roomId}`,
               {
-                dates: formatAlldates,
+                dates: alldatesTest,
               }
             );
             return res.data;
@@ -158,7 +150,7 @@ const Reserve = ({ setOpen, hotelId }) => {
                 <input
                   className="rInput"
                   type="text"
-                  defaultValue={user.username}
+                  defaultValue={user.fullName}
                 />
               </div>
               <label>Your Email</label>
@@ -176,7 +168,7 @@ const Reserve = ({ setOpen, hotelId }) => {
                 <input
                   className="rInput"
                   type="text"
-                  placeholder="Phone Number"
+                  defaultValue={user.phoneNumber}
                 />
               </div>
             </div>
@@ -216,7 +208,7 @@ const Reserve = ({ setOpen, hotelId }) => {
                       onChange={(e) =>
                         handleSelect(e, item.price, roomNumber.number)
                       }
-                      disabled={isAvailable(roomNumber)}
+                      disabled={isAvailableTest(roomNumber)}
                     />
                   </div>
                 ))}

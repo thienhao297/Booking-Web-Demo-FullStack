@@ -1,8 +1,6 @@
 import "./list.css";
 import Navbar from "../../components/navbar/Navbar";
 import Header from "../../components/header/Header";
-import Footer from "../../components/footer/Footer";
-
 import { useLocation } from "react-router-dom";
 import { useState } from "react";
 import { format } from "date-fns";
@@ -19,10 +17,14 @@ const List = () => {
   const [min, setMin] = useState(undefined);
   const [max, setMax] = useState(undefined);
 
-  const { data, loading, error, reFetch } = useFetch(
+  const { data, loading, reFetch } = useFetch(
     `http://localhost:5000/api/hotels/query?city=${destination}&min=${
       min ? min : 0
-    }&max=${max ? max : 999}`
+    }&max=${
+      max ? max : 999
+    }&startDate=${dates[0].startDate.getTime()}&endDate=${dates[0].endDate.getTime()}&adult=${
+      options.adult
+    }&room=${options.room}`
   );
 
   const handleClick = () => {
@@ -39,7 +41,11 @@ const List = () => {
             <h1 className="lsTitle">Search</h1>
             <div className="lsItem">
               <label>Destination</label>
-              <input placeholder={destination} type="text" />
+              <input
+                defaultValue={destination}
+                type="text"
+                onChange={(e) => setDestination(e.target.value)}
+              />
             </div>
             <div className="lsItem">
               <label>Check-in Date</label>
@@ -84,7 +90,10 @@ const List = () => {
                     type="number"
                     min={1}
                     className="lsOptionInput"
-                    placeholder={options.adult}
+                    onChange={(e) =>
+                      setOptions({ ...options, adult: Number(e.target.value) })
+                    }
+                    defaultValue={options.adult}
                   />
                 </div>
                 <div className="lsOptionItem">
@@ -93,7 +102,13 @@ const List = () => {
                     type="number"
                     min={0}
                     className="lsOptionInput"
-                    placeholder={options.children}
+                    onChange={(e) =>
+                      setOptions({
+                        ...options,
+                        children: Number(e.target.value),
+                      })
+                    }
+                    defaultValue={options.children}
                   />
                 </div>
                 <div className="lsOptionItem">
@@ -102,7 +117,10 @@ const List = () => {
                     type="number"
                     min={1}
                     className="lsOptionInput"
-                    placeholder={options.room}
+                    onChange={(e) =>
+                      setOptions({ ...options, room: Number(e.target.value) })
+                    }
+                    defaultValue={options.room}
                   />
                 </div>
               </div>
