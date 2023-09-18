@@ -165,7 +165,7 @@ const EditHotel = () => {
                 <label htmlFor="file">Images:</label>
                 <input
                   type="text"
-                  id="imageUrl"
+                  id="photos"
                   onChange={handleChange}
                   defaultValue={hotelInfo.photos}
                 />
